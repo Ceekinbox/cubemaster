@@ -1,4 +1,3 @@
-
 import cv2
 import threading
 import sys
@@ -6,16 +5,15 @@ import time
 import multiprocessing as mprssing
 import numpy as np
 
-
-def getContours(img, dst):
+def getContours(img):
     contours, hierarchy = cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)  # 检测外部轮廓
     x, y, w, h = 0, 0, 0, 0
     for cnt in contours:
         area = cv2.contourArea(cnt)
-        print(area)
+        print(type(area))
         if area > 300:
             print(">300")
-            cv2.drawContours(dst, cnt, -1, (255, 0, 0), 3)
+            # cv2.drawContours(dst, cnt, -1, (255, 0, 0), 3)
             peri = cv2.arcLength(cnt, True)
             approx = cv2.approxPolyDP(cnt, 0.02 * peri, True)
             x, y, w, h = cv2.boundingRect(approx)  # xy对象的宽和高
@@ -23,6 +21,11 @@ def getContours(img, dst):
 
 
 def findColors(image, myColors):
+    """
+    功能描述： 不要用这个函数，会产生错误的输出
+    接口：不要用这个函数，会产生错误的输出
+    修改记录：不要用这个函数，会产生错误的输出
+    """
     myColors = [[2, 107, 0, 19, 255, 255],
                 [133, 56, 0, 159, 156, 255],
                 [57, 76, 0, 100, 255, 255]]  # 颜色列表
@@ -43,7 +46,10 @@ def findColor(image, color):
     lower = np.array(color[0:3])
     upper = np.array(color[3:6])
     mask = cv2.inRange(imgHSV, lower, upper)
-    # cv2.imshow("dst", mask)
+
+    mask = cv2.GaussianBlur(mask, (3, 3), 0)
+    cv2.imshow("dst", mask)
+    getContours(mask)
     return mask
 
 def colorComposition():
@@ -53,6 +59,7 @@ def colorComposition():
         return dst
     修改记录：2023-4-2   创建函数
     """
+
 def darwRect(image, num):
     """
     功能描述： 画一个或两个四边形，标定魔方位置
