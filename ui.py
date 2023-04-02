@@ -400,9 +400,11 @@ class Ui_MainWindow(object):
             ret, image_ = cap.read()
             image = cv2.resize(image_, (384, 288))  # 把读到的帧的大小重新设置为 640x480
             # ---------------------------------
-            # 在这里添加代码
+            # 在这里添加代码 测试用 运行时应删去
             # ----------------------------------
-            process.findColor(image, self.color)
+            # process.findColor(image, self.color)
+            process.darwRect(image, 1)
+            process.cubeAffine(image, 1)
             # ----------------------------------
             show = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # 视频色彩转换回RGB，这样才是现实的颜色
 
