@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="pic">
+    <file>cap.jpg</file>
+    <file>cube.jpg</file>
+  </qresource>
+</RCC>
