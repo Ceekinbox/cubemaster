@@ -11,7 +11,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import cv2
 from PyQt5.QtCore import QTimer
-import picture
 import serial
 import serial.tools.list_ports
 import threading
