@@ -2,6 +2,7 @@ import serial
 import time
 import serial.tools.list_ports
 import threading
+import kociemba
 
 
 class serialMain:
@@ -61,7 +62,11 @@ class serialMain:
 #        thread_read = threading.Thread(target=self.serial_read, daemon=True)
 #        thread_read.start()
        # print('thread created')
-
+if __name__ == "__main__":
+    a = 0
+    x = kociemba.solve('DRLUUBFBRBLURRLRUBLRDDFDLFUFUFFDBRDUBRUFLLFDDBFLUBLRBD')
+    print(type(x))
+    print(x)
 #   example:
 #   usart1 = serialMain()
 #   usart1.serial_init("COM1")
